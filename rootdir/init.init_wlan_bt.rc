@@ -1,0 +1,5 @@
+service init_wlan_bt /system/bin/sh /system/etc/init_wlan_bt.sh
+    class main
+    user root
+    group root
+    oneshot

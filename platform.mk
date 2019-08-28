@@ -56,7 +56,12 @@ PRODUCT_COPY_FILES += \
 # Platform Init
 PRODUCT_PACKAGES += \
     fstab.rhine \
-    init.rhine.pwr
+    init.rhine.pwr \
+    init.init_wlan_bt.rc
+
+PRODUCT_PACKAGES += \
+    init.qcom.bt.sh \
+    init_wlan_bt.sh
 
 # NFC packages
 PRODUCT_PACKAGES += \
