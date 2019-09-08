@@ -16,6 +16,8 @@
 PLATFORM_COMMON_PATH := device/sony/rhine
 
 $(call inherit-product, device/sony/common/common.mk)
+$(call inherit-product, vendor/qcom/opensource/dataservices/Android.mk)
+
 
 SOMC_PLATFORM := rhine
 
@@ -149,7 +151,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qti.sensors.tilt=false \
     ro.qti.sensors.tilt_detector=false \
     ro.qti.sensors.dpc=false \
-    ro.qti.sensors.wu=false
+    ro.qti.sensors.wu=true \
+    ro.qti.sensors.orientation=true \
+    ro.qti.sensors.gravity=true \
+    ro.qti.sensors.proximity=true \
+    ro.qti.sensors.rotvec=true \
+    ro.qti.sensors.laccel=true
+
+#not sure about all of these sensors (after .sensors.wu), shamelessly copied from loire port
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.HAL3.enabled=0 \

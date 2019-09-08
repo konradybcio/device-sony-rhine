@@ -16,6 +16,8 @@
 PLATFORM_COMMON_PATH := device/sony/rhine
 PRODUCT_PLATFORM_SOD := true
 
+QCOM_BT_USE_SMD_TTY := true
+
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_BOARD_PLATFORM := msm8974
@@ -58,9 +60,10 @@ BOARD_WLAN_DEVICE := qcwcn
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
 HOSTAPD_VERSION := VER_0_8_X
-WIFI_DRIVER_FW_PATH_AP  := "ap"
-WIFI_DRIVER_FW_PATH_P2P := "p2p"
-WIFI_DRIVER_FW_PATH_STA := "sta"
+## Those break Wi-Fi when enabling the hotspot on UBPorts
+#WIFI_DRIVER_FW_PATH_AP  := "ap"
+#WIFI_DRIVER_FW_PATH_P2P := "p2p"
+#WIFI_DRIVER_FW_PATH_STA := "sta"
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # BT definitions for Qualcomm solution
@@ -80,7 +83,14 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 # SELinux
 BOARD_SEPOLICY_DIRS += $(PLATFORM_COMMON_PATH)/sepolicy_platform
 
+# Force use of non-CAF HAL modules
+BOARD_USES_QCOM_HARDWARE := false
+
 # Platform witout a vendor partition
 TARGET_COPY_OUT_VENDOR := system/vendor
+
+# Location support
+USE_DEVICE_SPECIFIC_GPS := true
+USE_DEVICE_SPECIFIC_LOC_API := true
 
 include device/sony/common/CommonConfig.mk

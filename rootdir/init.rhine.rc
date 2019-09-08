@@ -94,3 +94,9 @@ on property:hw.fm.init=0
 
 on property:hw.fm.init=1
     write /sys/module/radio_iris_transport/parameters/fmsmd_set 1
+
+service init_setup_first_boot /system/bin/sh /system/etc/init_setup_first_boot.sh
+    class main
+    user root
+    group root
+    oneshot
